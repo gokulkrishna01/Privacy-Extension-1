@@ -5,9 +5,15 @@
   "description": "This extensions defends against various privacy attacks which happens while you browse on the internet.",
   "version": "1.0",
 
+  "options_ui": {
+    "page": "/html/options.html",
+    "chrome_style": true,
+    "open_in_tab": false
+  },
+
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "/html/popup.html"
   },
   "icons" : {
     "64": "icon.png"
