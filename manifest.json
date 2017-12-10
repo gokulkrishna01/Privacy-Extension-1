@@ -13,7 +13,9 @@
     "64": "icon.png"
   },
   "background" : {
-    "scripts" : ["background.js"]
+    "scripts" : ["background.js"],
+    "page": "/html/background.html",
+    "persistent": true
   },
   "chrome_url_overrides":{
     "newtab"  : "newtab.html"
@@ -21,8 +23,11 @@
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["options.js"]
+      "all_frames": true,
+      "js": ["/js/inject/content.js"],
+      "matches": ["*://*/*"],
+      "js": ["options.js"],
+      "run_at": "document_start"
     }
   ],
   "permissions": [
@@ -31,6 +36,7 @@
     "tabs",
     "browsingData",
     "contentSettings",
-    "<all_urls>"
+    "<all_urls>",
+    "webRequest", "webRequestBlocking", "*://*/*", "storage", "tabs"
   ]
 }
